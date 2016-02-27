@@ -236,31 +236,6 @@ class ViewController: UIViewController, UIScrollViewDelegate, UITableViewDelegat
         }
     }
     
-    
-    
-    @IBAction func changeMapType(sender: AnyObject) {
-        let actionSheet = UIAlertController(title: "Map Types", message: "Select map type:", preferredStyle: UIAlertControllerStyle.ActionSheet)
-        
-        let normalMapTypeAction = UIAlertAction(title: "Normal", style: UIAlertActionStyle.Default) { (alertAction) -> Void in
-            self.googleMapView.mapType = GoogleMaps.kGMSTypeNormal
-        }
-        
-        
-        let hybridMapTypeAction = UIAlertAction(title: "Hybrid", style: UIAlertActionStyle.Default) { (alertAction) -> Void in
-            self.googleMapView.mapType = GoogleMaps.kGMSTypeHybrid
-        }
-        
-        let cancelAction = UIAlertAction(title: "Close", style: UIAlertActionStyle.Cancel) { (alertAction) -> Void in
-            
-        }
-        
-        actionSheet.addAction(normalMapTypeAction)
-        actionSheet.addAction(hybridMapTypeAction)
-        actionSheet.addAction(cancelAction)
-        
-        presentViewController(actionSheet, animated: true, completion: nil)
-    }
-    
     func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
         print(error)
     }
@@ -289,15 +264,18 @@ class ViewController: UIViewController, UIScrollViewDelegate, UITableViewDelegat
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("CellID") as! TableViewCell
         if isSearchActive {
+            cell.contentView.userInteractionEnabled = false
             cell.cellName!.text = filtered[indexPath.row].name
             cell.addressLabel.text = filtered[indexPath.row].formattedAddress
             cell.cellImage.image = UIImage(imageLiteral: "info")
-            
         }
         else  {
+            cell.contentView.userInteractionEnabled = true
             cell.cellName!.text = galleryArray[indexPath.row].name
             cell.addressLabel.text = galleryArray[indexPath.row].formattedAddress
             cell.cellImage.image = UIImage(imageLiteral: "info")
+            
+            
         }
         
         return cell
@@ -324,6 +302,7 @@ class ViewController: UIViewController, UIScrollViewDelegate, UITableViewDelegat
         infoWindow.snippet.text = marker.snippet
         return infoWindow
     }
+
 
     
 }
