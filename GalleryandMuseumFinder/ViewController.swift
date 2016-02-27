@@ -291,13 +291,13 @@ class ViewController: UIViewController, UIScrollViewDelegate, UITableViewDelegat
         if isSearchActive {
             cell.cellName!.text = filtered[indexPath.row].name
             cell.addressLabel.text = filtered[indexPath.row].formattedAddress
-            cell.cellImage.image = UIImage(imageLiteral: "likeImage")
+            cell.cellImage.image = UIImage(imageLiteral: "info")
             
         }
         else  {
             cell.cellName!.text = galleryArray[indexPath.row].name
             cell.addressLabel.text = galleryArray[indexPath.row].formattedAddress
-            cell.cellImage.image = UIImage(imageLiteral: "likeImage")
+            cell.cellImage.image = UIImage(imageLiteral: "info")
         }
         
         return cell
@@ -312,6 +312,7 @@ class ViewController: UIViewController, UIScrollViewDelegate, UITableViewDelegat
         let marker = GMSMarker(position: position)
         marker.appearAnimation = GoogleMaps.kGMSMarkerAnimationPop
         marker.title = gallery.name
+        marker.snippet = gallery.formattedAddress
         marker.map = self.googleMapView
         self.tableView.reloadData()
         
@@ -320,6 +321,7 @@ class ViewController: UIViewController, UIScrollViewDelegate, UITableViewDelegat
     func mapView(mapView: GMSMapView!, markerInfoWindow marker: GMSMarker!) -> UIView! {
         let infoWindow = NSBundle.mainBundle().loadNibNamed("CustomInfoWindow", owner: self, options: nil).first! as! CustomInfoWindow
         infoWindow.label.text = marker.title
+        infoWindow.snippet.text = marker.snippet
         return infoWindow
     }
 

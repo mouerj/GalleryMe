@@ -11,7 +11,7 @@ import UIKit
 class CustomInfoWindow: UIView {
 
     @IBOutlet var label: UILabel!
-
+    @IBOutlet var snippet:UILabel!
     
     }
 

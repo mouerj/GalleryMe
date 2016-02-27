@@ -32,14 +32,6 @@ class IntroViewController: UIViewController {
             letsGoButton.hidden = true
         }
 
-            //proceed to enter the app
-            //            func autoSegue() {
-            //                self.performSegueWithIdentifier("EnterAppSegue2", sender: self)
-            //            }
-            //                var timer = NSTimer.scheduledTimerWithTimeInterval(3.0, target: self, selector: "autoSegue:", userInfo: nil, repeats: false)
-            //            
-
-
     }
 
 }
