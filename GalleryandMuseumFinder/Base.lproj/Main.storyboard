@@ -168,9 +168,6 @@
                                                     <variation key="widthClass=compact" fixedFrame="YES">
                                                         <rect key="frame" x="379" y="5" width="15" height="14"/>
                                                     </variation>
-                                                    <connections>
-                                                        <outletCollection property="gestureRecognizers" destination="eRF-V0-muX" appends="YES" id="WDq-4x-990"/>
-                                                    </connections>
                                                 </imageView>
                                             </subviews>
                                             <constraints>
@@ -340,7 +337,8 @@
                         <textField key="titleView" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="GalleryMe" textAlignment="center" minimumFontSize="17" id="nnj-U4-aBW">
                             <rect key="frame" x="180" y="2" width="240" height="40"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <color key="textColor" red="0.7019608021" green="0.7019608021" blue="0.7019608021" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="textColor" red="0.0" green="0.50196081400000003" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
                             <fontDescription key="fontDescription" name="AvenirNext-MediumItalic" family="Avenir Next" pointSize="34"/>
                             <textInputTraits key="textInputTraits"/>
                         </textField>
@@ -376,11 +374,6 @@
                         <outlet property="searchResultsDelegate" destination="cSu-9h-eUs" id="NNb-va-wGC"/>
                     </connections>
                 </searchDisplayController>
-                <tapGestureRecognizer id="eRF-V0-muX">
-                    <connections>
-                        <segue destination="rrM-Qt-Qrh" kind="show" identifier="toDetailVC" id="cUr-NH-GEz"/>
-                    </connections>
-                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="-409.5" y="210"/>
         </scene>
