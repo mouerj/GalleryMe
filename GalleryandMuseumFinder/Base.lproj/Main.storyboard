@@ -159,16 +159,16 @@
                                                         </mask>
                                                     </variation>
                                                 </label>
-                                                <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="info" translatesAutoresizingMaskIntoConstraints="NO" id="s06-4p-g2c">
-                                                    <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
-                                                    <gestureRecognizers/>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ya0-Mc-ENZ">
+                                                    <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                                    <state key="normal" title="Button" image="info"/>
                                                     <variation key="widthClass=compact" fixedFrame="YES">
-                                                        <rect key="frame" x="371" y="3" width="21" height="18"/>
+                                                        <rect key="frame" x="371" y="0.0" width="21" height="18"/>
                                                     </variation>
                                                     <connections>
-                                                        <outletCollection property="gestureRecognizers" destination="G0F-QH-ARv" appends="YES" id="q7v-G0-Luy"/>
+                                                        <segue destination="rrM-Qt-Qrh" kind="show" id="5lo-8Z-P6J"/>
                                                     </connections>
-                                                </imageView>
+                                                </button>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="1ZJ-fm-to6" firstAttribute="leading" secondItem="L7i-1c-AYk" secondAttribute="leadingMargin" constant="18" id="GZn-YJ-JbM"/>
@@ -182,7 +182,7 @@
                                             </constraints>
                                             <variation key="default">
                                                 <mask key="subviews">
-                                                    <exclude reference="s06-4p-g2c"/>
+                                                    <exclude reference="Ya0-Mc-ENZ"/>
                                                 </mask>
                                                 <mask key="constraints">
                                                     <exclude reference="GZn-YJ-JbM"/>
@@ -195,7 +195,7 @@
                                             </variation>
                                             <variation key="widthClass=compact">
                                                 <mask key="subviews">
-                                                    <include reference="s06-4p-g2c"/>
+                                                    <include reference="Ya0-Mc-ENZ"/>
                                                 </mask>
                                                 <mask key="constraints">
                                                     <include reference="GZn-YJ-JbM"/>
@@ -212,7 +212,6 @@
                                         </accessibility>
                                         <connections>
                                             <outlet property="addressLabel" destination="7wA-fH-UhB" id="NwJ-Ix-hFE"/>
-                                            <outlet property="cellImage" destination="s06-4p-g2c" id="4Sz-1H-QKa"/>
                                             <outlet property="cellName" destination="1ZJ-fm-to6" id="OtS-q9-qap"/>
                                         </connections>
                                     </tableViewCell>
@@ -380,12 +379,6 @@
                         <outlet property="searchResultsDelegate" destination="cSu-9h-eUs" id="NNb-va-wGC"/>
                     </connections>
                 </searchDisplayController>
-                <tapGestureRecognizer id="G0F-QH-ARv">
-                    <connections>
-                        <outlet property="delegate" destination="2nb-dh-wyU" id="bJN-l4-bCO"/>
-                        <segue destination="rrM-Qt-Qrh" kind="show" id="ldd-Kj-kQF"/>
-                    </connections>
-                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="-429" y="210"/>
         </scene>

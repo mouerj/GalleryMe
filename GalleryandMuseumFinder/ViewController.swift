@@ -152,8 +152,6 @@ class ViewController: UIViewController, UIScrollViewDelegate, UITableViewDelegat
                     print(pm.locality)
                     self.userLoc = pm.locality!
                     self.data_request()
-                    
-                   
                     print("I'm in \(self.userLoc)")
                 }
                 else {
@@ -312,13 +310,13 @@ class ViewController: UIViewController, UIScrollViewDelegate, UITableViewDelegat
             cell.contentView.userInteractionEnabled = false
             cell.cellName!.text = filtered[indexPath.row].name
             cell.addressLabel.text = filtered[indexPath.row].formattedAddress
-            cell.cellImage.image = UIImage(imageLiteral: "info")
+        //    cell.cellImage.image = UIImage(imageLiteral: "info")
         }
         else  {
             cell.contentView.userInteractionEnabled = true
             cell.cellName!.text = galleryArray[indexPath.row].name
             cell.addressLabel.text = galleryArray[indexPath.row].formattedAddress
-            cell.cellImage.image = UIImage(imageLiteral: "info")
+          //  cell.cellImage.image = UIImage(imageLiteral: "info")
             let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "handleImageTap:")
             tap.cancelsTouchesInView = true
             tap.numberOfTapsRequired = 1
