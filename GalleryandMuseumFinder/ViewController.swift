@@ -34,6 +34,8 @@ class ViewController: UIViewController, UIScrollViewDelegate, UITableViewDelegat
     
     var isSearchActive: Bool = false
     
+    var refreshControl: UIRefreshControl!
+    
     var latitude: Double!
     
     var mapTasks = MapTasks()
@@ -53,6 +55,11 @@ class ViewController: UIViewController, UIScrollViewDelegate, UITableViewDelegat
     override func viewDidLoad() {
         super.viewDidLoad()
         self.automaticallyAdjustsScrollViewInsets = false
+
+        self.refreshControl = UIRefreshControl()
+        self.refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
+        self.refreshControl.addTarget(self, action: "refresh:", forControlEvents: UIControlEvents.ValueChanged)
+        self.tableView.addSubview(self.refreshControl)
 
         locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization()
@@ -74,6 +81,14 @@ class ViewController: UIViewController, UIScrollViewDelegate, UITableViewDelegat
         self.tableView.rowHeight = 50
 
     }
+    
+    func refresh(sender:AnyObject) {
+        self.data_request()
+        self.tableView.reloadData()
+        self.refreshControl.endRefreshing()
+    }
+    
+    
     
     func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
         
@@ -158,7 +173,7 @@ class ViewController: UIViewController, UIScrollViewDelegate, UITableViewDelegat
     }
     
     func data_request() {
-        
+    
         let url1 = String("https://maps.googleapis.com/maps/api/place/textsearch/json?query=\(self.userLoc)&type=art_gallery&key=AIzaSyDNopD2lCPhs0z-Uap3f8EPUt9R3gGjGjg")
         let url2 = String("https://maps.googleapis.com/maps/api/place/textsearch/json?query=\(self.userLoc)&type=art_gallery&key=AIzaSyDNopD2lCPhs0z-Uap3f8EPUt9R3gGjGjg&pagetoken=CqQDoAEAAHsw7tThV1V22yk57l00EASB3lYL9ANG0Zhi287TWYStsLLP2jMJjXIdsY41Pi3fTBvmrsoK1v_0-CfeHZkmGT5fHeHIEcTEj5kYsR1_uYqxooZVul1s7iFOzqzKMKz089JOpKNvedao71Oku_qBtaiJ25bmTF2laXsfAbrXH3sHi3CsdKdQiT8xo-bFgDiZlEGIBGlso3HM5YY5E2Wsg54uMYKU4_2RbD-xJVhl6JAobW8cn4mqe7UwAt8g3Iv0SxxUKuP8mOTcZXo60EfQ5snqXaNvWzy2yxcDbBtff6FTnjNuqYIOhVNg7SF0eyRZv2zcgbuU29WkyjZHUp5RqTyycZ-S6WyBCFv1GvcNy9TGf83VUzq6uZBxN6dEYOv35R9SIJ5NNNjetO97CnLNqJcXhC4JjLLRuwJUbGati2ZN5SKrIxGdeQSxkf7OETrQ81JQAkVzfD1Ap-Z7R3_lq7nNz_4vX9vXt-w9iIsGFQnXB0wUz_ODjtHz-_fcLl2ErgSj-sKdBZ5h2jLFlLcUscxjMhsLkgniJg6CmpWCCAx2EhAf0iT0qNwxOo02HZp0HED6GhQqM42r8FUYp8QIN4ynhH6SgG0dAA")
         let url3 = String("https://maps.googleapis.com/maps/api/place/textsearch/json?query=\(self.userLoc)&type=art_gallery&key=AIzaSyDNopD2lCPhs0z-Uap3f8EPUt9R3gGjGjg&pagetoken=CvQB4QAAAN97q78lv5-0k4ymrAN634vgCQ4ZRpsi9Irq0GWm0Wsa5_jP2mnIPo_S1mMJHYTRuhBESfjgdrjfm43VnQhzXodXbeIfXTWb0Z1fYIL9cRIbGWMLHc-CI--fMDDbHuiOPK3M9W2drdb0lBrOWx2B0mgAaqNGc4H6PnGJ8wBYdp5ulc-6w5G1Obm1ai7pMECABc_AOVVSXZSqFHyPJ-oytt9kA54Z60NbuJyl86KBLSELhDMZYfPez6Z84zUZB-qmZyEws4t64i5SeH_WF4QszlRJsG86S9JnI-3tX-pBqyPD8DicdFYWbNFx_0OoRG6zARIQPNcliuomX5_JWRt5Ys1FNRoUEx8nzZJdYx7iY11qji1L8YOhkg4")
@@ -180,7 +195,7 @@ class ViewController: UIViewController, UIScrollViewDelegate, UITableViewDelegat
                 print(error)
                 let jsonDict = try NSJSONSerialization.JSONObjectWithData(data!, options: .AllowFragments)
                     as! NSDictionary
-                //  print(jsonDict)
+                  print(jsonDict)
                 let galleries1 = jsonDict ["results"] as! [NSDictionary]
                 for dictionary in galleries1 {
                     let galleryObject:Gallery = Gallery(galleryDictionary: dictionary)
@@ -206,7 +221,7 @@ class ViewController: UIViewController, UIScrollViewDelegate, UITableViewDelegat
                 print(error)
                 let jsonDict = try NSJSONSerialization.JSONObjectWithData(data!, options: .AllowFragments)
                     as! NSDictionary
-                //  print(jsonDict)
+                print(jsonDict)
                 let galleries2 = jsonDict ["results"] as! [NSDictionary]
                 for dictionary in galleries2 {
                     let galleryObject:Gallery = Gallery(galleryDictionary: dictionary)
@@ -232,7 +247,7 @@ class ViewController: UIViewController, UIScrollViewDelegate, UITableViewDelegat
                 print(error)
                 let jsonDict = try NSJSONSerialization.JSONObjectWithData(data!, options: .AllowFragments)
                     as! NSDictionary
-                //   print(jsonDict)
+                   print(jsonDict)
                 let galleries3 = jsonDict ["results"] as! [NSDictionary]
                 for dictionary in galleries3 {
                     let galleryObject:Gallery = Gallery(galleryDictionary: dictionary)
@@ -259,7 +274,7 @@ class ViewController: UIViewController, UIScrollViewDelegate, UITableViewDelegat
                 print(error)
                 let jsonDict = try NSJSONSerialization.JSONObjectWithData(data!, options: .AllowFragments)
                     as! NSDictionary
-                // print(jsonDict)
+                 print(jsonDict)
                 let galleries4 = jsonDict ["results"] as! [NSDictionary]
                 for dictionary in galleries4 {
                     let galleryObject:Gallery = Gallery(galleryDictionary: dictionary)
@@ -304,8 +319,9 @@ class ViewController: UIViewController, UIScrollViewDelegate, UITableViewDelegat
             cell.cellName!.text = galleryArray[indexPath.row].name
             cell.addressLabel.text = galleryArray[indexPath.row].formattedAddress
             cell.cellImage.image = UIImage(imageLiteral: "info")
+            
         }
-        
+        self.tableView.reloadData()
         return cell
     }
     
