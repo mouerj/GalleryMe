@@ -32,6 +32,8 @@ class Gallery  {
         
         CLCoordinate = CLLocationCoordinate2DMake(latitude, longitude)
         
+        
+        
 
     }
 }
