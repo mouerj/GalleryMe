@@ -159,15 +159,15 @@
                                                         </mask>
                                                     </variation>
                                                 </label>
-                                                <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="info" translatesAutoresizingMaskIntoConstraints="NO" id="ebQ-V3-Ne1" userLabel="Cell Image">
-                                                    <rect key="frame" x="513" y="8" width="65" height="73"/>
-                                                    <accessibility key="accessibilityConfiguration">
-                                                        <accessibilityTraits key="traits" button="YES" image="YES" allowsDirectInteraction="YES"/>
-                                                    </accessibility>
+                                                <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="info" translatesAutoresizingMaskIntoConstraints="NO" id="s06-4p-g2c">
+                                                    <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                                     <gestureRecognizers/>
                                                     <variation key="widthClass=compact" fixedFrame="YES">
-                                                        <rect key="frame" x="379" y="5" width="15" height="14"/>
+                                                        <rect key="frame" x="371" y="3" width="21" height="18"/>
                                                     </variation>
+                                                    <connections>
+                                                        <outletCollection property="gestureRecognizers" destination="G0F-QH-ARv" appends="YES" id="q7v-G0-Luy"/>
+                                                    </connections>
                                                 </imageView>
                                             </subviews>
                                             <constraints>
@@ -181,6 +181,9 @@
                                                 <constraint firstAttribute="trailingMargin" secondItem="7wA-fH-UhB" secondAttribute="trailing" constant="15" id="vYP-d2-UfF"/>
                                             </constraints>
                                             <variation key="default">
+                                                <mask key="subviews">
+                                                    <exclude reference="s06-4p-g2c"/>
+                                                </mask>
                                                 <mask key="constraints">
                                                     <exclude reference="GZn-YJ-JbM"/>
                                                     <exclude reference="IxC-Ye-ZhZ"/>
@@ -191,6 +194,9 @@
                                                 </mask>
                                             </variation>
                                             <variation key="widthClass=compact">
+                                                <mask key="subviews">
+                                                    <include reference="s06-4p-g2c"/>
+                                                </mask>
                                                 <mask key="constraints">
                                                     <include reference="GZn-YJ-JbM"/>
                                                     <include reference="IxC-Ye-ZhZ"/>
@@ -206,7 +212,7 @@
                                         </accessibility>
                                         <connections>
                                             <outlet property="addressLabel" destination="7wA-fH-UhB" id="NwJ-Ix-hFE"/>
-                                            <outlet property="cellImage" destination="ebQ-V3-Ne1" id="crY-AD-B0j"/>
+                                            <outlet property="cellImage" destination="s06-4p-g2c" id="4Sz-1H-QKa"/>
                                             <outlet property="cellName" destination="1ZJ-fm-to6" id="OtS-q9-qap"/>
                                         </connections>
                                     </tableViewCell>
@@ -374,8 +380,14 @@
                         <outlet property="searchResultsDelegate" destination="cSu-9h-eUs" id="NNb-va-wGC"/>
                     </connections>
                 </searchDisplayController>
+                <tapGestureRecognizer id="G0F-QH-ARv">
+                    <connections>
+                        <outlet property="delegate" destination="2nb-dh-wyU" id="bJN-l4-bCO"/>
+                        <segue destination="rrM-Qt-Qrh" kind="show" id="ldd-Kj-kQF"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="-409.5" y="210"/>
+            <point key="canvasLocation" x="-429" y="210"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="jhm-yw-lap">
@@ -702,6 +714,7 @@
                                 </state>
                                 <connections>
                                     <action selector="onCancelTapped:" destination="YbE-h3-9Bp" eventType="touchUpInside" id="DqF-Gf-qBl"/>
+                                    <segue destination="2nC-Er-UKp" kind="show" id="vM6-Fk-pWb"/>
                                 </connections>
                             </button>
                         </subviews>
