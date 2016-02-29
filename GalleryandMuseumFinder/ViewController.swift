@@ -10,7 +10,7 @@ import UIKit
 import GoogleMaps
 import Google
 import CoreLocation
-import MapKit 
+import MapKit
 
 var tableView: UITableView!
 
@@ -52,16 +52,18 @@ class ViewController: UIViewController, UIScrollViewDelegate, UITableViewDelegat
     var markersArray: Array<GMSMarker> = []
     
     var placesClient: GMSPlacesClient?
-   
+    
+    var currentPlaceID: String = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.automaticallyAdjustsScrollViewInsets = false
-
+        
         self.refreshControl = UIRefreshControl()
         self.refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
         self.refreshControl.addTarget(self, action: "refresh:", forControlEvents: UIControlEvents.ValueChanged)
         self.tableView.addSubview(self.refreshControl)
-
+        
         locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization()
         locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
@@ -80,7 +82,7 @@ class ViewController: UIViewController, UIScrollViewDelegate, UITableViewDelegat
         
         self.tableView.backgroundColor = UIColor.clearColor()
         self.tableView.rowHeight = 50
-
+        
     }
     
     func refresh(sender:AnyObject) {
@@ -119,11 +121,11 @@ class ViewController: UIViewController, UIScrollViewDelegate, UITableViewDelegat
     }
     
     // MARK Change Map Type View
-   
+    
     @IBAction func MapView(sender: UISegmentedControl) {
         switch segmentControl.selectedSegmentIndex {
         case 0:
-              self.googleMapView.mapType = GoogleMaps.kGMSTypeNormal
+            self.googleMapView.mapType = GoogleMaps.kGMSTypeNormal
         case 1:
             self.googleMapView.mapType = GoogleMaps.kGMSTypeHybrid
         default:
@@ -193,12 +195,14 @@ class ViewController: UIViewController, UIScrollViewDelegate, UITableViewDelegat
                 print(error)
                 let jsonDict = try NSJSONSerialization.JSONObjectWithData(data!, options: .AllowFragments)
                     as! NSDictionary
-                  print(jsonDict)
+                //       print(jsonDict)
                 let galleries1 = jsonDict ["results"] as! [NSDictionary]
                 for dictionary in galleries1 {
                     let galleryObject:Gallery = Gallery(galleryDictionary: dictionary)
-                    self.galleryArray.append(galleryObject)
-                    
+                    if !self.galleryArray.contains(galleryObject) {
+                        self.galleryArray.append(galleryObject)
+                        
+                    }
                 }
                 
                 dispatch_async(dispatch_get_main_queue()) { () -> Void in
@@ -219,25 +223,24 @@ class ViewController: UIViewController, UIScrollViewDelegate, UITableViewDelegat
                 print(error)
                 let jsonDict = try NSJSONSerialization.JSONObjectWithData(data!, options: .AllowFragments)
                     as! NSDictionary
-                print(jsonDict)
+                // print(jsonDict)
                 let galleries2 = jsonDict ["results"] as! [NSDictionary]
                 for dictionary in galleries2 {
                     let galleryObject:Gallery = Gallery(galleryDictionary: dictionary)
-                    self.galleryArray.append(galleryObject)
+                    if !self.galleryArray.contains(galleryObject) {
+                        self.galleryArray.append(galleryObject)
+                    }
                 }
                 
                 dispatch_async(dispatch_get_main_queue()) { () -> Void in
                     self.tableView.reloadData()
                 }
-                
             }
             catch let error as NSError {
                 print("jsonError: \(error.localizedDescription)")
                 
             }
-            
         }
-        
         task2.resume()
         
         let task3 = session3.dataTaskWithURL(urlThree!) { (data , response, error ) -> Void in
@@ -245,18 +248,18 @@ class ViewController: UIViewController, UIScrollViewDelegate, UITableViewDelegat
                 print(error)
                 let jsonDict = try NSJSONSerialization.JSONObjectWithData(data!, options: .AllowFragments)
                     as! NSDictionary
-                   print(jsonDict)
+                //       print(jsonDict)
                 let galleries3 = jsonDict ["results"] as! [NSDictionary]
                 for dictionary in galleries3 {
                     let galleryObject:Gallery = Gallery(galleryDictionary: dictionary)
-                    self.galleryArray.append(galleryObject)
+                    if !self.galleryArray.contains(galleryObject) {
+                        self.galleryArray.append(galleryObject)
+                    }
                 }
                 
                 dispatch_async(dispatch_get_main_queue()) { () -> Void in
                     self.tableView.reloadData()
-                    
                 }
-                
             }
                 
             catch let error as NSError {
@@ -272,7 +275,7 @@ class ViewController: UIViewController, UIScrollViewDelegate, UITableViewDelegat
                 print(error)
                 let jsonDict = try NSJSONSerialization.JSONObjectWithData(data!, options: .AllowFragments)
                     as! NSDictionary
-                 print(jsonDict)
+                //   print(jsonDict)
                 let galleries4 = jsonDict ["results"] as! [NSDictionary]
                 for dictionary in galleries4 {
                     let galleryObject:Gallery = Gallery(galleryDictionary: dictionary)
@@ -310,18 +313,14 @@ class ViewController: UIViewController, UIScrollViewDelegate, UITableViewDelegat
             cell.contentView.userInteractionEnabled = false
             cell.cellName!.text = filtered[indexPath.row].name
             cell.addressLabel.text = filtered[indexPath.row].formattedAddress
-        //    cell.cellImage.image = UIImage(imageLiteral: "info")
         }
         else  {
             cell.contentView.userInteractionEnabled = true
             cell.cellName!.text = galleryArray[indexPath.row].name
             cell.addressLabel.text = galleryArray[indexPath.row].formattedAddress
-          //  cell.cellImage.image = UIImage(imageLiteral: "info")
-            let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "handleImageTap:")
-            tap.cancelsTouchesInView = true
-            tap.numberOfTapsRequired = 1
-            UIImageView.init(image: UIImage(imageLiteral: "info")).addGestureRecognizer(tap)
-         //   handleImageTap(tap)
+      //      cell.onTapSegue.selected = true
+
+            
         }
         return cell
     }
@@ -333,16 +332,33 @@ class ViewController: UIViewController, UIScrollViewDelegate, UITableViewDelegat
         let lng = gallery.longitude
         let position = CLLocationCoordinate2DMake(lat, lng)
         let marker = GMSMarker(position: position)
+        print(galleryArray[indexPath.row].placeID)
         marker.appearAnimation = GoogleMaps.kGMSMarkerAnimationPop
         marker.title = gallery.name
         marker.snippet = gallery.formattedAddress
         marker.map = self.googleMapView
         self.tableView.reloadData()
+        self.currentPlaceID = (galleryArray[indexPath.row].placeID)
     }
     
-//    func handleImageTap(gestureRecognizer: UIGestureRecognizer) {
-//        RKlogDebug("info")
-//    }
+    @IBAction func onTapSegue(sender: UIButton) {
+        let indexPath = tableView.indexPathForRowAtPoint(sender.center)
+        self.currentPlaceID = (galleryArray[indexPath!.row].placeID)
+        print("from prepare for onTapSegue\(self.currentPlaceID)")
+        self.tableView.reloadData()
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "toDetailVC" {
+            let dvc = segue.destinationViewController as! DetailViewController
+            dvc.detailArray = [Gallery]()
+            dvc.viaSegue = self.currentPlaceID
+            print("from prepare for segue\(self.currentPlaceID)")
+            
+        }
+        
+    }
+    
 }
 
 

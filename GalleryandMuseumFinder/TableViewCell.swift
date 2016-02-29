@@ -15,7 +15,7 @@ class TableViewCell: UITableViewCell {
     @IBOutlet weak var cellName: UILabel!
     @IBOutlet weak var addressLabel: UILabel!
     @IBOutlet weak var isOpen: UILabel!
-    
+    @IBOutlet weak var onTapSegue: UIButton!
     
     
     override func awakeFromNib() {

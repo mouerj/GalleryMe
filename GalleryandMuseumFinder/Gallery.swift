@@ -9,7 +9,7 @@
 import Foundation
 
 
-class Gallery  {
+class Gallery: Equatable  {
     var name: String!
     var formattedAddress: String!
     var latitude: Double!
@@ -18,6 +18,7 @@ class Gallery  {
     var stringLong: String!
     var CLCoordinate = CLLocationCoordinate2D()
     var placeID: String!
+    var detailFormattedAddress: String!
     
     
     init(galleryDictionary: NSDictionary) {
@@ -31,9 +32,10 @@ class Gallery  {
         placeID = galleryDictionary["place_id"] as! String
         
         CLCoordinate = CLLocationCoordinate2DMake(latitude, longitude)
-        
-        
-        
 
     }
+}
+
+func ==(firstElement: Gallery, secondElement: Gallery) -> Bool {
+    return firstElement.name == secondElement.name
 }
