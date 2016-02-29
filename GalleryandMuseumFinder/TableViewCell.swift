@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol TableViewCellDelegate {
+    func onDiscosureTapped(placeID: String)
+}
+
 class TableViewCell: UITableViewCell {
 
     
@@ -16,7 +20,8 @@ class TableViewCell: UITableViewCell {
     @IBOutlet weak var addressLabel: UILabel!
     @IBOutlet weak var isOpen: UILabel!
     @IBOutlet weak var onTapSegue: UIButton!
-    
+    var placeID: String!
+    var delegate: TableViewCellDelegate!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -28,7 +33,9 @@ class TableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-
+    @IBAction func onTapSegue(sender: UIButton) {
+        self.delegate.onDiscosureTapped(placeID)
+    }
 
     
 }

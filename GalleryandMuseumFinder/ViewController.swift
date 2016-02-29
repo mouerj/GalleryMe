@@ -14,7 +14,7 @@ import MapKit
 
 var tableView: UITableView!
 
-class ViewController: UIViewController, UIScrollViewDelegate, UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate, GMSMapViewDelegate, UISearchBarDelegate, UISearchControllerDelegate {
+class ViewController: UIViewController, UIScrollViewDelegate, UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate, GMSMapViewDelegate, UISearchBarDelegate, UISearchControllerDelegate, TableViewCellDelegate {
     
     
     @IBOutlet weak var tableView: GMtableView!
@@ -109,6 +109,11 @@ class ViewController: UIViewController, UIScrollViewDelegate, UITableViewDelegat
             isSearchActive = true
         }
         tableView.reloadData()
+    }
+    
+    func onDiscosureTapped(placeID: String) {
+        currentPlaceID = placeID
+        performSegueWithIdentifier("toDetailVC", sender: nil)
     }
     
     override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {

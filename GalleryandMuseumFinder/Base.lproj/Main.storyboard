@@ -209,7 +209,6 @@
                                                         <rect key="frame" x="365" y="0.0" width="27" height="27"/>
                                                     </variation>
                                                     <connections>
-                                                        <action selector="onTapSegue:" destination="cSu-9h-eUs" eventType="touchUpInside" id="e8j-qK-gCx"/>
                                                         <segue destination="67D-B8-h7M" kind="show" identifier="toDetailVC" id="6uX-DZ-Jub"/>
                                                     </connections>
                                                 </button>
@@ -257,7 +256,6 @@
                                         <connections>
                                             <outlet property="addressLabel" destination="7wA-fH-UhB" id="NwJ-Ix-hFE"/>
                                             <outlet property="cellName" destination="1ZJ-fm-to6" id="OtS-q9-qap"/>
-                                            <outlet property="onTapSegue" destination="Ya0-Mc-ENZ" id="wZR-U6-D7Z"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
