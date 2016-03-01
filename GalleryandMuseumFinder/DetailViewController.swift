@@ -15,13 +15,17 @@ import MapKit
 class DetailViewController: UIViewController, CLLocationManagerDelegate, GMSMapViewDelegate {
     
     @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var addressLabel: UILabel!
-    @IBOutlet weak var phoneNumber: UILabel!
+  
     @IBOutlet weak var openLabel: UILabel!
+    
     @IBOutlet weak var imageView: UIImageView!
     
     @IBOutlet weak var websiteTextView: UITextView!
    
+    @IBOutlet weak var phoneNumber: UITextView!
+   
+    @IBOutlet weak var addressLabel: UITextView!
+    
     var detailArray = [Gallery]()
     
     var viaSegue: String!
@@ -78,20 +82,22 @@ class DetailViewController: UIViewController, CLLocationManagerDelegate, GMSMapV
                 dispatch_async(dispatch_get_main_queue()) { () -> Void in
                     self.nameLabel.text = result["name"] as? String
                     self.addressLabel.text = result["formatted_address"] as? String
+                    self.addressLabel.editable = (false)
+                    self.addressLabel.dataDetectorTypes = UIDataDetectorTypes.All
                     self.websiteTextView.text = result["website"] as? String
                     self.phoneNumber.text = result["formatted_phone_number"] as? String
+                    self.phoneNumber.editable = (false)
+                    self.phoneNumber.dataDetectorTypes = UIDataDetectorTypes.All
                     self.openLabel.text = result["weekday_text"] as? String
-                
+                    
+                    
                 }
             }
             catch let error as NSError {
                 print("jsonError: \(error.localizedDescription)")
             }
-            
         }
-        
         detailTask.resume()
-        
     }
    
     func NSTextCheckingTypesFromUIDataDetectorTypes(dataDetectorType: UIDataDetectorTypes) -> NSTextCheckingType {
@@ -115,6 +121,5 @@ class DetailViewController: UIViewController, CLLocationManagerDelegate, GMSMapV
         
         return textCheckingType
     }
-    
-    
+   
 }
