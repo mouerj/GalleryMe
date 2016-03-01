@@ -20,6 +20,7 @@ class TableViewCell: UITableViewCell {
     @IBOutlet weak var addressLabel: UILabel!
     @IBOutlet weak var isOpen: UILabel!
     @IBOutlet weak var onTapSegue: UIButton!
+    
     var placeID: String!
     var delegate: TableViewCellDelegate!
     

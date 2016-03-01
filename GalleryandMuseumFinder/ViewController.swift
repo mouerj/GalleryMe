@@ -318,20 +318,21 @@ class ViewController: UIViewController, UIScrollViewDelegate, UITableViewDelegat
             cell.contentView.userInteractionEnabled = false
             cell.cellName!.text = filtered[indexPath.row].name
             cell.addressLabel.text = filtered[indexPath.row].formattedAddress
+            cell.onTapSegue.hidden = true
         }
         else  {
             cell.contentView.userInteractionEnabled = true
             cell.cellName!.text = galleryArray[indexPath.row].name
             cell.addressLabel.text = galleryArray[indexPath.row].formattedAddress
-      //      cell.onTapSegue.selected = true
-
-            
+            cell.onTapSegue.hidden = true
         }
         return cell
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         searchBar.resignFirstResponder()
+        let cell = tableView.cellForRowAtIndexPath(indexPath) as! TableViewCell
+        cell.onTapSegue.hidden = false
         let gallery = galleryArray[indexPath.row]
         let lat = gallery.latitude
         let lng = gallery.longitude
@@ -342,8 +343,13 @@ class ViewController: UIViewController, UIScrollViewDelegate, UITableViewDelegat
         marker.title = gallery.name
         marker.snippet = gallery.formattedAddress
         marker.map = self.googleMapView
-        self.tableView.reloadData()
         self.currentPlaceID = (galleryArray[indexPath.row].placeID)
+    }
+    
+    
+    func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
+        let cell = tableView.cellForRowAtIndexPath(indexPath) as! TableViewCell
+        cell.onTapSegue.hidden = true
     }
     
     @IBAction func onTapSegue(sender: UIButton) {
