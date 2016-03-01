@@ -58,7 +58,6 @@ class ViewController: UIViewController, UIScrollViewDelegate, UITableViewDelegat
     override func viewDidLoad() {
         super.viewDidLoad()
         self.automaticallyAdjustsScrollViewInsets = false
-        
         self.refreshControl = UIRefreshControl()
         self.refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
         self.refreshControl.addTarget(self, action: "refresh:", forControlEvents: UIControlEvents.ValueChanged)
@@ -96,7 +95,7 @@ class ViewController: UIViewController, UIScrollViewDelegate, UITableViewDelegat
         filtered.removeAll()
         
         for galObj in galleryArray {
-            if galObj.name.rangeOfString(self.searchBar.text!) != nil {
+            if galObj.name.rangeOfString(self.searchBar.text!, options: NSStringCompareOptions.CaseInsensitiveSearch) != nil {
                 filtered.append(galObj)
             }
         }
@@ -346,8 +345,7 @@ class ViewController: UIViewController, UIScrollViewDelegate, UITableViewDelegat
         marker.title = gallery.name
         marker.snippet = gallery.formattedAddress
         marker.map = self.googleMapView
-        self.currentPlaceID = (galleryArray[indexPath.row].placeID)
-        
+        self.currentPlaceID = (galleryArray[indexPath.row].placeID)        
     }
     
     
@@ -374,6 +372,12 @@ class ViewController: UIViewController, UIScrollViewDelegate, UITableViewDelegat
         }
         
     }
+    
+    @IBAction func onClearTapped(sender: AnyObject) {
+        self.googleMapView.clear()
+    }
+    
+    
     
 }
 
