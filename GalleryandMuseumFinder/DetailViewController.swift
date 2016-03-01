@@ -38,6 +38,8 @@ class DetailViewController: UIViewController, CLLocationManagerDelegate, GMSMapV
         super.viewDidLoad()
         
         self.detailPull()
+        
+        print("making sure this works  \(self.viaSegue)")
 
         if let url = NSURL(string: "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=CmRdAAAAB84NH5OrUibk1rVmpSccMLOd706q-urUIjPNUput41lvdYIjPdg8cwFEojBT5sW4bViuM4bFBRAWimknEVoo-1J1wedx78o3a1UkHBDfuE5BTLypl9nK511CjtdBYOZLEhDM8YgNtBI9FGkva1oBxkP3GhSNvQm9uhkW1CrrEXYwuNr7YMhdag&key=AIzaSyDNopD2lCPhs0z-Uap3f8EPUt9R3gGjGjg") {
             
