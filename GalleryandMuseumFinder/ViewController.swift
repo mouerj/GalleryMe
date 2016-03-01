@@ -315,22 +315,25 @@ class ViewController: UIViewController, UIScrollViewDelegate, UITableViewDelegat
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("CellID") as! TableViewCell
         if isSearchActive {
-            cell.contentView.userInteractionEnabled = false
+            cell.contentView.userInteractionEnabled = true
             cell.cellName!.text = filtered[indexPath.row].name
             cell.addressLabel.text = filtered[indexPath.row].formattedAddress
             cell.onTapSegue.hidden = true
+            
         }
         else  {
             cell.contentView.userInteractionEnabled = true
             cell.cellName!.text = galleryArray[indexPath.row].name
             cell.addressLabel.text = galleryArray[indexPath.row].formattedAddress
             cell.onTapSegue.hidden = true
+         
         }
         return cell
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         searchBar.resignFirstResponder()
+        searchBar.text=""
         let cell = tableView.cellForRowAtIndexPath(indexPath) as! TableViewCell
         cell.onTapSegue.hidden = false
         let gallery = galleryArray[indexPath.row]
@@ -344,6 +347,7 @@ class ViewController: UIViewController, UIScrollViewDelegate, UITableViewDelegat
         marker.snippet = gallery.formattedAddress
         marker.map = self.googleMapView
         self.currentPlaceID = (galleryArray[indexPath.row].placeID)
+        
     }
     
     

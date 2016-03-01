@@ -26,7 +26,7 @@ class DetailViewController: UIViewController, CLLocationManagerDelegate, GMSMapV
     
     var viaSegue: String!
     
-    let detailURL = String("https://maps.googleapis.com/maps/api/place/details/json?&key=AIzaSyDNopD2lCPhs0z-Uap3f8EPUt9R3gGjGjg&placeid=ChIJWew-xRzTD4gRi4csiDch8O4")
+
     
     let photoURL = String("https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=CnRlAAAAs7_BywmwJ_Y5udZ77zewt8_APqZOu1rdqg7h5C_zI7gEO-hnFByVUuvBcAD1bhKiwa1IpCMACkmf037vztqnWOPBx0Ocrtdq8k3yk4RAg7UOPLj1PkQVy8sbSfUZ6UKeEO2hWefK1PHWgaSXX7_gfhIQDMYBM-V6E1wn6Yu-3Fe-bxoUKn6eM9SI8VatnSExK7hOwg9gCn8&key=AIzaSyDNopD2lCPhs0z-Uap3f8EPUt9R3gGjGjg")
 
@@ -65,6 +65,9 @@ class DetailViewController: UIViewController, CLLocationManagerDelegate, GMSMapV
     
     
     func detailPull () {
+        
+        let detailURL = String("https://maps.googleapis.com/maps/api/place/details/json?&key=AIzaSyDNopD2lCPhs0z-Uap3f8EPUt9R3gGjGjg&placeid=\(self.viaSegue)")
+        
         let url1 = NSURL(string: detailURL)
         
         let detailTask = session1.dataTaskWithURL(url1!) { (data , response, error ) -> Void in
