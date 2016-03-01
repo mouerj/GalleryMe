@@ -22,10 +22,10 @@
 		952C0C601C738DCF005BC9E7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 952C0C5E1C738DCF005BC9E7 /* Main.storyboard */; };
 		952C0C621C738DCF005BC9E7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 952C0C611C738DCF005BC9E7 /* Assets.xcassets */; };
 		952C0C651C738DCF005BC9E7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 952C0C631C738DCF005BC9E7 /* LaunchScreen.storyboard */; };
-		952C0C6F1C7391F6005BC9E7 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952C0C6E1C7391F6005BC9E7 /* DetailViewController.swift */; };
 		952C0C711C73992D005BC9E7 /* CommentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952C0C701C73992D005BC9E7 /* CommentViewController.swift */; };
 		DF0D48FC1C8002AB00E9889F /* CustomInfoWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF0D48FB1C8002AB00E9889F /* CustomInfoWindow.swift */; };
 		DF0D48FE1C8002C600E9889F /* CustomInfoWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = DF0D48FD1C8002C600E9889F /* CustomInfoWindow.xib */; };
+		DF3C04E31C85316300E83EEF /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF3C04E21C85316300E83EEF /* DetailViewController.swift */; };
 		DF53E61C1C7A558F00BD3AEF /* Gallery.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF53E61B1C7A558F00BD3AEF /* Gallery.swift */; };
 		DF53E6201C7BAB7700BD3AEF /* GMtableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF53E61F1C7BAB7700BD3AEF /* GMtableView.swift */; };
 		DF53E6221C7BABD900BD3AEF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF53E6211C7BABD900BD3AEF /* ViewController.swift */; };
@@ -62,10 +62,10 @@
 		952C0C611C738DCF005BC9E7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		952C0C641C738DCF005BC9E7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		952C0C661C738DCF005BC9E7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		952C0C6E1C7391F6005BC9E7 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		952C0C701C73992D005BC9E7 /* CommentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentViewController.swift; sourceTree = "<group>"; };
 		DF0D48FB1C8002AB00E9889F /* CustomInfoWindow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomInfoWindow.swift; sourceTree = "<group>"; };
 		DF0D48FD1C8002C600E9889F /* CustomInfoWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomInfoWindow.xib; sourceTree = "<group>"; };
+		DF3C04E21C85316300E83EEF /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		DF53E61B1C7A558F00BD3AEF /* Gallery.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Gallery.swift; sourceTree = "<group>"; };
 		DF53E61F1C7BAB7700BD3AEF /* GMtableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GMtableView.swift; sourceTree = "<group>"; };
 		DF53E6211C7BABD900BD3AEF /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -143,7 +143,7 @@
 				30C8FCF81C7507A00007D48C /* ResetViewController.swift */,
 				30C8FCFA1C7507B70007D48C /* RegisterViewController.swift */,
 				952C0C701C73992D005BC9E7 /* CommentViewController.swift */,
-				952C0C6E1C7391F6005BC9E7 /* DetailViewController.swift */,
+				DF3C04E21C85316300E83EEF /* DetailViewController.swift */,
 				952C0C611C738DCF005BC9E7 /* Assets.xcassets */,
 				952C0C631C738DCF005BC9E7 /* LaunchScreen.storyboard */,
 				30324A161C7677DE00D016E3 /* GoogleService-Info.plist */,
@@ -302,8 +302,8 @@
 				30C8FCF71C7507860007D48C /* LoginViewController.swift in Sources */,
 				30C8FCF11C74F9630007D48C /* Constants.swift in Sources */,
 				952C0C711C73992D005BC9E7 /* CommentViewController.swift in Sources */,
-				952C0C6F1C7391F6005BC9E7 /* DetailViewController.swift in Sources */,
 				DF785F8D1C811DDB000DC875 /* IntroViewController.swift in Sources */,
+				DF3C04E31C85316300E83EEF /* DetailViewController.swift in Sources */,
 				30C8FCF31C74FA4F0007D48C /* DataService.swift in Sources */,
 				952C0C5B1C738DCF005BC9E7 /* AppDelegate.swift in Sources */,
 				DF53E62D1C7E15C800BD3AEF /* CustomHeaderView.swift in Sources */,

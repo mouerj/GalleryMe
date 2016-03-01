@@ -28,22 +28,13 @@
                                     <rect key="frame" x="21" y="332" width="105" height="21"/>
                                 </variation>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Website" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wHL-tt-uhC">
-                                <rect key="frame" x="44" y="170" width="74" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                                <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="17" y="413" width="74" height="21"/>
-                                </variation>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Phone Number" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xhJ-ZZ-uQ0">
                                 <rect key="frame" x="44" y="134" width="130" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="20" y="373" width="130" height="21"/>
+                                    <rect key="frame" x="20" y="368" width="130" height="21"/>
                                 </variation>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mdQ-ey-lbY">
@@ -78,15 +69,25 @@
                                     </mask>
                                 </variation>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rRt-eS-8o8">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Open Now" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rRt-eS-8o8">
                                 <rect key="frame" x="-42" y="-21" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="21" y="455" width="42" height="21"/>
+                                    <rect key="frame" x="21" y="455" width="105" height="21"/>
                                 </variation>
                             </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="website" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="xf4-Ib-EOh">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <dataDetectorType key="dataDetectorTypes" link="YES"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="17" y="402" width="309" height="54"/>
+                                </variation>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -98,6 +99,7 @@
                             <mask key="subviews">
                                 <exclude reference="lIR-bI-UmZ"/>
                                 <exclude reference="rRt-eS-8o8"/>
+                                <exclude reference="xf4-Ib-EOh"/>
                             </mask>
                             <mask key="constraints">
                                 <exclude reference="hlJ-6s-Qdn"/>
@@ -109,6 +111,7 @@
                             <mask key="subviews">
                                 <include reference="lIR-bI-UmZ"/>
                                 <include reference="rRt-eS-8o8"/>
+                                <include reference="xf4-Ib-EOh"/>
                             </mask>
                             <mask key="constraints">
                                 <include reference="hlJ-6s-Qdn"/>
@@ -125,8 +128,7 @@
                         <outlet property="nameLabel" destination="mdQ-ey-lbY" id="My5-fd-hos"/>
                         <outlet property="openLabel" destination="rRt-eS-8o8" id="BNm-zS-4yp"/>
                         <outlet property="phoneNumber" destination="xhJ-ZZ-uQ0" id="M3X-fK-S29"/>
-                        <outlet property="viaSegueLabel" destination="rRt-eS-8o8" id="PMs-2f-fVT"/>
-                        <outlet property="websiteLabel" destination="wHL-tt-uhC" id="ZKq-b8-Yvd"/>
+                        <outlet property="websiteTextView" destination="xf4-Ib-EOh" id="fjO-MK-6QC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mjD-jX-znG" userLabel="First Responder" sceneMemberID="firstResponder"/>
