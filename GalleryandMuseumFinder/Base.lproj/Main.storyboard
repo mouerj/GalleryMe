@@ -133,7 +133,9 @@
                             <constraint firstItem="xf4-Ib-EOh" firstAttribute="top" secondItem="xhJ-ZZ-uQ0" secondAttribute="bottom" constant="8" id="QDN-dB-zVH"/>
                             <constraint firstItem="w0d-Ul-nt0" firstAttribute="centerX" secondItem="nOh-O6-YNm" secondAttribute="centerX" id="VUv-kx-nTm"/>
                             <constraint firstItem="xhJ-ZZ-uQ0" firstAttribute="top" secondItem="w0d-Ul-nt0" secondAttribute="bottom" constant="8" id="WLN-Xc-izj"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="xf4-Ib-EOh" secondAttribute="trailing" constant="54" id="WMr-OZ-Uci"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="xf4-Ib-EOh" secondAttribute="trailing" constant="54" id="WMr-OZ-Uci">
+                                <variation key="widthClass=compact" constant="6"/>
+                            </constraint>
                             <constraint firstItem="A6O-5y-eUk" firstAttribute="top" secondItem="rRt-eS-8o8" secondAttribute="bottom" constant="14" id="XUc-zd-3ol"/>
                             <constraint firstAttribute="trailingMargin" secondItem="xhJ-ZZ-uQ0" secondAttribute="trailing" constant="168" id="ci3-Nl-OG5"/>
                             <constraint firstAttribute="trailingMargin" secondItem="w0d-Ul-nt0" secondAttribute="trailing" constant="61" id="d9E-Or-OX4"/>
@@ -144,7 +146,9 @@
                             </constraint>
                             <constraint firstItem="lIR-bI-UmZ" firstAttribute="top" secondItem="X6t-o6-VI5" secondAttribute="bottom" id="hlJ-6s-Qdn"/>
                             <constraint firstAttribute="trailingMargin" secondItem="lIR-bI-UmZ" secondAttribute="trailing" constant="-20" id="j8M-Cn-tj5"/>
-                            <constraint firstItem="xf4-Ib-EOh" firstAttribute="leading" secondItem="nOh-O6-YNm" secondAttribute="leadingMargin" constant="62" id="jBG-i4-Qm3"/>
+                            <constraint firstItem="xf4-Ib-EOh" firstAttribute="leading" secondItem="nOh-O6-YNm" secondAttribute="leadingMargin" constant="62" id="jBG-i4-Qm3">
+                                <variation key="widthClass=compact" constant="28"/>
+                            </constraint>
                             <constraint firstAttribute="trailingMargin" secondItem="rRt-eS-8o8" secondAttribute="trailing" constant="187" id="leq-Qn-Zgc"/>
                             <constraint firstItem="lIR-bI-UmZ" firstAttribute="leading" secondItem="nOh-O6-YNm" secondAttribute="leadingMargin" constant="-20" id="lqY-WM-5JB"/>
                             <constraint firstAttribute="trailingMargin" secondItem="mdQ-ey-lbY" secondAttribute="trailing" constant="50" id="mX4-6X-HIv"/>
@@ -231,7 +235,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mjD-jX-znG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="280.5" y="210"/>
+            <point key="canvasLocation" x="280" y="210"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="noo-me-tD8">
@@ -560,7 +564,6 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="peoplebw" translatesAutoresizingMaskIntoConstraints="NO" id="Lb5-po-pOQ">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="414"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="414" id="75I-wN-yw8"/>
                                     <constraint firstAttribute="height" constant="415" id="vbv-aK-RWK"/>
                                 </constraints>
                             </imageView>
@@ -595,8 +598,6 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Find local art galleries near you" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Ps-dh-PWF">
                                 <rect key="frame" x="20" y="418" width="560" height="46"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="45" id="ObL-BY-yFF"/>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="39" id="SW2-vr-A6r"/>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="32" id="bXa-g5-Fjg"/>
                                     <constraint firstAttribute="height" constant="32" id="de4-fK-Q54"/>
                                 </constraints>

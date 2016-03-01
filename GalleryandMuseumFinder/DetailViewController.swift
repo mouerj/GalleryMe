@@ -62,9 +62,7 @@ class DetailViewController: UIViewController, CLLocationManagerDelegate, GMSMapV
         } .resume()
     }
     
-    
-    
-    func detailPull () {
+        func detailPull () {
         
         let detailURL = String("https://maps.googleapis.com/maps/api/place/details/json?&key=AIzaSyDNopD2lCPhs0z-Uap3f8EPUt9R3gGjGjg&placeid=\(self.viaSegue)")
         
@@ -95,5 +93,28 @@ class DetailViewController: UIViewController, CLLocationManagerDelegate, GMSMapV
         detailTask.resume()
         
     }
+   
+    func NSTextCheckingTypesFromUIDataDetectorTypes(dataDetectorType: UIDataDetectorTypes) -> NSTextCheckingType {
+        var textCheckingType: NSTextCheckingType = []
+        
+        if dataDetectorType.contains(.Address) {
+            textCheckingType.insert(.Address)
+        }
+        
+        if dataDetectorType.contains(.CalendarEvent) {
+            textCheckingType.insert(.Date)
+        }
+        
+        if dataDetectorType.contains(.Link) {
+            textCheckingType.insert(.Link)
+        }
+        
+        if dataDetectorType.contains(.PhoneNumber) {
+            textCheckingType.insert(.PhoneNumber)
+        }
+        
+        return textCheckingType
+    }
+    
     
 }
