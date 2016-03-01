@@ -339,6 +339,7 @@ class ViewController: UIViewController, UIScrollViewDelegate, UITableViewDelegat
         let gallery = galleryArray[indexPath.row]
         let lat = gallery.latitude
         let lng = gallery.longitude
+    //    let bounds = GMSCoordinateBounds.init()
         let position = CLLocationCoordinate2DMake(lat, lng)
         let marker = GMSMarker(position: position)
         print(galleryArray[indexPath.row].placeID)
@@ -346,6 +347,8 @@ class ViewController: UIViewController, UIScrollViewDelegate, UITableViewDelegat
         marker.title = gallery.name
         marker.snippet = gallery.formattedAddress
         marker.map = self.googleMapView
+        let target = CLLocationCoordinate2DMake(gallery.latitude, gallery.longitude)
+        googleMapView.camera = GMSCameraPosition.cameraWithTarget(target, zoom: 16)
         self.currentPlaceID = (galleryArray[indexPath.row].placeID)
         
     }
