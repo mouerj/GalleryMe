@@ -204,9 +204,9 @@
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ya0-Mc-ENZ">
                                                     <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                                                    <state key="normal" title="infoButton" image="info"/>
+                                                    <state key="normal" image="info"/>
                                                     <variation key="widthClass=compact" fixedFrame="YES">
-                                                        <rect key="frame" x="371" y="18" width="21" height="17"/>
+                                                        <rect key="frame" x="368" y="8" width="32" height="30"/>
                                                     </variation>
                                                     <connections>
                                                         <segue destination="67D-B8-h7M" kind="show" identifier="toDetailVC" id="6uX-DZ-Jub"/>

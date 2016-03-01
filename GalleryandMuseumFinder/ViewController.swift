@@ -348,8 +348,9 @@ class ViewController: UIViewController, UIScrollViewDelegate, UITableViewDelegat
     
     
     func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
-        let cell = tableView.cellForRowAtIndexPath(indexPath) as! TableViewCell
+        if let cell = tableView.cellForRowAtIndexPath(indexPath) as? TableViewCell {
         cell.onTapSegue.hidden = true
+        }
     }
     
     @IBAction func onTapSegue(sender: UIButton) {
