@@ -87,7 +87,6 @@ class ViewController: UIViewController, UIScrollViewDelegate, UITableViewDelegat
     
     func refresh(sender:AnyObject) {
         self.data_request()
-        self.tableView.reloadData()
         self.refreshControl.endRefreshing()
     }
     
@@ -96,7 +95,7 @@ class ViewController: UIViewController, UIScrollViewDelegate, UITableViewDelegat
         filtered.removeAll()
         
         for galObj in galleryArray {
-            if galObj.name.rangeOfString(self.searchBar.text!) != nil {
+            if galObj.name.rangeOfString(self.searchBar.text!, options: NSStringCompareOptions.CaseInsensitiveSearch) != nil {
                 filtered.append(galObj)
             }
         }
@@ -209,10 +208,7 @@ class ViewController: UIViewController, UIScrollViewDelegate, UITableViewDelegat
                         
                     }
                 }
-                
-                dispatch_async(dispatch_get_main_queue()) { () -> Void in
-                    self.tableView.reloadData()
-                }
+                self.tableView.reloadData()
             }
                 
             catch let error as NSError {
@@ -326,7 +322,7 @@ class ViewController: UIViewController, UIScrollViewDelegate, UITableViewDelegat
             cell.cellName!.text = galleryArray[indexPath.row].name
             cell.addressLabel.text = galleryArray[indexPath.row].formattedAddress
             cell.onTapSegue.hidden = true
-         
+            
         }
         return cell
     }
@@ -334,12 +330,13 @@ class ViewController: UIViewController, UIScrollViewDelegate, UITableViewDelegat
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         searchBar.resignFirstResponder()
         searchBar.text=""
+        isSearchActive = false
         let cell = tableView.cellForRowAtIndexPath(indexPath) as! TableViewCell
         cell.onTapSegue.hidden = false
         let gallery = galleryArray[indexPath.row]
         let lat = gallery.latitude
         let lng = gallery.longitude
-    //    let bounds = GMSCoordinateBounds.init()
+        //    let bounds = GMSCoordinateBounds.init()
         let position = CLLocationCoordinate2DMake(lat, lng)
         let marker = GMSMarker(position: position)
         print(galleryArray[indexPath.row].placeID)
@@ -351,12 +348,18 @@ class ViewController: UIViewController, UIScrollViewDelegate, UITableViewDelegat
         googleMapView.camera = GMSCameraPosition.cameraWithTarget(target, zoom: 16)
         self.currentPlaceID = (galleryArray[indexPath.row].placeID)
         
+        if isSearchActive {
+            currentPlaceID = (filtered[indexPath.row].placeID)
+            cell.cellName!.text = (filtered[indexPath.row].name)
+            cell.addressLabel.text = (filtered[indexPath.row].formattedAddress)
+            cell.onTapSegue.hidden = false
+        }
+        
     }
-    
     
     func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
         if let cell = tableView.cellForRowAtIndexPath(indexPath) as? TableViewCell {
-        cell.onTapSegue.hidden = true
+            cell.onTapSegue.hidden = true
         }
     }
     
@@ -380,7 +383,12 @@ class ViewController: UIViewController, UIScrollViewDelegate, UITableViewDelegat
     
 }
 
-
+class GalleryNavigationController: UINavigationController {
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return .LightContent
+        
+    }
+}
 
 
 
