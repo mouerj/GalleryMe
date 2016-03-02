@@ -19,7 +19,7 @@ class Gallery: Equatable  {
     var CLCoordinate = CLLocationCoordinate2D()
     var placeID: String!
     var detailFormattedAddress: String!
-    var photoReference: String!
+    var photoReference: UIImage!
     
     
     init(galleryDictionary: NSDictionary) {
@@ -31,7 +31,8 @@ class Gallery: Equatable  {
         latitude = locationDictionary!!["lat"] as! Double
         longitude = locationDictionary!!["lng"] as! Double
         placeID = galleryDictionary["place_id"] as! String
-        photoReference = galleryDictionary["photo_reference"] as! String
+        
+//        photoReference = galleryDictionary["photo_reference"] as! UIImage
         
         CLCoordinate = CLLocationCoordinate2DMake(latitude, longitude)
 
