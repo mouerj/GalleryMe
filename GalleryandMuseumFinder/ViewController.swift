@@ -308,6 +308,13 @@ class ViewController: UIViewController, UIScrollViewDelegate, UITableViewDelegat
         
     }
     
+    func getSelectedGallery(indexPath: NSIndexPath) -> Gallery {
+        if self.filtered.count > 0 {
+          return self.filtered[indexPath.row]
+        }
+        return galleryArray[indexPath.row]
+    }
+    
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("CellID") as! TableViewCell
         if isSearchActive {
@@ -330,10 +337,9 @@ class ViewController: UIViewController, UIScrollViewDelegate, UITableViewDelegat
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         searchBar.resignFirstResponder()
         searchBar.text=""
-        isSearchActive = false
         let cell = tableView.cellForRowAtIndexPath(indexPath) as! TableViewCell
         cell.onTapSegue.hidden = false
-        let gallery = galleryArray[indexPath.row]
+        let gallery = getSelectedGallery(indexPath)
         let lat = gallery.latitude
         let lng = gallery.longitude
         //    let bounds = GMSCoordinateBounds.init()
@@ -350,8 +356,8 @@ class ViewController: UIViewController, UIScrollViewDelegate, UITableViewDelegat
         
         if isSearchActive {
             currentPlaceID = (filtered[indexPath.row].placeID)
-            cell.cellName!.text = (filtered[indexPath.row].name)
-            cell.addressLabel.text = (filtered[indexPath.row].formattedAddress)
+            cell.cellName!.text = filtered[indexPath.row].name
+            cell.addressLabel.text = filtered[indexPath.row].formattedAddress
             cell.onTapSegue.hidden = false
         }
         
@@ -386,7 +392,6 @@ class ViewController: UIViewController, UIScrollViewDelegate, UITableViewDelegat
 class GalleryNavigationController: UINavigationController {
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
         return .LightContent
-        
     }
 }
 

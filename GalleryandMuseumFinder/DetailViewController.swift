@@ -33,7 +33,9 @@ class DetailViewController: UIViewController, CLLocationManagerDelegate, GMSMapV
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.view.backgroundColor = UIColor.grayColor()
+        self.view.backgroundColor = UIColor.whiteColor()
+        
+        self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
         
         self.detailPull()
         
@@ -129,4 +131,6 @@ class DetailViewController: UIViewController, CLLocationManagerDelegate, GMSMapV
     }
     
 }
+
+
 
