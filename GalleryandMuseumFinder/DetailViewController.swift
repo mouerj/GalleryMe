@@ -33,9 +33,11 @@ class DetailViewController: UIViewController, CLLocationManagerDelegate, GMSMapV
     override func viewDidLoad() {
         super.viewDidLoad()
         
+//        self.view.backgroundColor = UIColor.grayColor()
+        
         self.detailPull()
         
-        print("making sure this works  \(self.viaSegue)")
+//        print("making sure this works  \(self.viaSegue)")
         
     }
     
@@ -59,7 +61,7 @@ class DetailViewController: UIViewController, CLLocationManagerDelegate, GMSMapV
                     as! Dictionary<String, AnyObject>
                 let result = jsonDict["result"] as! Dictionary<String, AnyObject>
                 
-                self.imageView.image = UIImage(named: "bob")
+                self.imageView.image = UIImage(named: "")
                 
                 if let photos = result["photos"] as? NSArray {
                     
@@ -67,19 +69,31 @@ class DetailViewController: UIViewController, CLLocationManagerDelegate, GMSMapV
                         self.photoRef = photoDict["photo_reference"] as? String
                         
                         self.photoPull()
-                        print("PHOTO: \(self.photoRef)")
                         
                     }
                 }
                 
+                
+                
                 print("RESULT: \(result)")
                 dispatch_async(dispatch_get_main_queue()) { () -> Void in
+                    let hoursDict = result["opening_hours"] as? Dictionary<String, AnyObject>
+                    print("HOURS: \(hoursDict)")
+                    
+                    if let hoursArray = hoursDict!["weekday_text"] as? NSArray {
+                        print("HOURS ARRAY: \(hoursArray)")
+                        
+        
+                        self.hoursTextView.text = (hoursArray.componentsJoinedByString("\r\n"))
+                            
+                            
+                    }
+
                     
                     self.nameLabel.text = result["name"] as? String
                     self.addressLabel.text = result["formatted_address"] as? String
                     self.websiteTextView.text = result["website"] as? String
                     self.phoneNumber.text = result["formatted_phone_number"] as? String
-                    self.hoursTextView.text = result["rating"] as? String
                     
                 }
                 
@@ -96,7 +110,7 @@ class DetailViewController: UIViewController, CLLocationManagerDelegate, GMSMapV
     
     func photoPull () {
         let photoUrl = String("https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&key=AIzaSyDNopD2lCPhs0z-Uap3f8EPUt9R3gGjGjg&photoreference=\(self.photoRef)")
-        print("FROM PHOTO PULL \(self.photoRef)")
+//        print("FROM PHOTO PULL \(self.photoRef)")
         
         if let url2 = NSURL(string: photoUrl) {
             
