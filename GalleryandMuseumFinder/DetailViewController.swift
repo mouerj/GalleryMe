@@ -39,8 +39,13 @@ class DetailViewController: UIViewController, CLLocationManagerDelegate, GMSMapV
         
         self.detailPull()
         
-   
         
+        if self.imageView.image != nil {
+            self.photoPull()
+        } else {
+            
+        }
+        self.imageView.image = UIImage(named: "GalleryMe_Icon1024")
     }
     
     func getDataFromUrl(url:NSURL, completion: ((data: NSData?, response: NSURLResponse?, error: NSError? ) -> Void)) {
@@ -63,7 +68,7 @@ class DetailViewController: UIViewController, CLLocationManagerDelegate, GMSMapV
                     as! Dictionary<String, AnyObject>
                 let result = jsonDict["result"] as! Dictionary<String, AnyObject>
                 
-                self.imageView.image = UIImage(named: "")
+                
                 
                 if let photos = result["photos"] as? NSArray {
                     
@@ -80,15 +85,15 @@ class DetailViewController: UIViewController, CLLocationManagerDelegate, GMSMapV
                 print("RESULT: \(result)")
                 dispatch_async(dispatch_get_main_queue()) { () -> Void in
                     if let hoursDict = result["opening_hours"] as? Dictionary<String, AnyObject> {
-                    print("HOURS: \(hoursDict)")
-                    
-                    let hoursArray = hoursDict["weekday_text"] as? NSArray
+                        print("HOURS: \(hoursDict)")
+                        
+                        let hoursArray = hoursDict["weekday_text"] as? NSArray
                         print("HOURS ARRAY: \(hoursArray)")
                         
                         
                         self.hoursTextView.text = (hoursArray!.componentsJoinedByString("\r\n"))
                         
-                    
+                        
                     }
                     self.nameLabel.text = result["name"] as? String
                     self.addressTextView.text = result["formatted_address"] as? String
@@ -121,6 +126,8 @@ class DetailViewController: UIViewController, CLLocationManagerDelegate, GMSMapV
             getDataFromUrl(url2, completion: { (data, response, error) -> Void in
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
                     self.imageView.image = UIImage(data: data!)
+                    
+                    
                     
                 })
                 

@@ -38,7 +38,10 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate {
         authHelper = TwitterAuthHelper(firebaseRef: ref, apiKey: "tpRrduRnsnj5Ehk3BR0z4lGAS")
     }
     
-
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return false
+    }
 
     @IBAction func onLoginTapped(sender: AnyObject) {
         let email = emailTextField.text
@@ -61,8 +64,6 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate {
             loginErrorAlert("Oops", message: "Don't forget to enter your email and password")
         }
     }
-
-    
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
