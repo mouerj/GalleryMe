@@ -86,8 +86,10 @@ class ViewController: UIViewController, UIScrollViewDelegate, UITableViewDelegat
     }
     
     func refresh(sender:AnyObject) {
+        self.isSearchActive = false
         self.data_request()
         self.refreshControl.endRefreshing()
+        self.tableView.reloadData()
     }
     
     func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
@@ -347,6 +349,7 @@ class ViewController: UIViewController, UIScrollViewDelegate, UITableViewDelegat
             cell.addressLabel.text = filtered[indexPath.row].formattedAddress
             cell.onTapSegue.hidden = false
         }
+        
         
     }
     func textFieldShouldReturn(textField: UITextField) -> Bool {
