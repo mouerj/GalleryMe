@@ -55,9 +55,6 @@ class DetailViewController: UIViewController, CLLocationManagerDelegate, GMSMapV
         
         self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
         
-        
-//        self.onTapSignOut.titleLabel!.sizeToFit()
-        
         self.detailPull()
         
        

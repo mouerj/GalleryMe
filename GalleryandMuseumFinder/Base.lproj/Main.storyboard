@@ -228,7 +228,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Exit"/>
                                 <connections>
-                                    <action selector="onTapSignOut:" destination="67D-B8-h7M" eventType="touchUpInside" id="8SU-cw-ZkQ"/>
+                                    <action selector="onTapSignOut:" destination="67D-B8-h7M" eventType="touchUpInside" id="Ivq-Mt-Zd4"/>
                                 </connections>
                             </button>
                         </barButtonItem>
@@ -240,7 +240,7 @@
                         <outlet property="hoursTextView" destination="eYJ-RK-juj" id="93u-K3-39J"/>
                         <outlet property="imageView" destination="lIR-bI-UmZ" id="CAo-n3-zo4"/>
                         <outlet property="nameLabel" destination="mdQ-ey-lbY" id="pNj-tg-gs9"/>
-                        <outlet property="onTapSignOut" destination="VRf-d5-oDV" id="IXL-77-uwi"/>
+                        <outlet property="onTapSignOut" destination="VRf-d5-oDV" id="joS-h1-OtU"/>
                         <outlet property="phoneTextView" destination="3iy-pn-FEf" id="iAT-v5-MyY"/>
                         <outlet property="websiteTextView" destination="xf4-Ib-EOh" id="fjO-MK-6QC"/>
                     </connections>
@@ -322,7 +322,7 @@
                                                     <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                                     <state key="normal" image="info"/>
                                                     <variation key="widthClass=compact" fixedFrame="YES">
-                                                        <rect key="frame" x="371" y="8" width="21" height="19"/>
+                                                        <rect key="frame" x="356" y="8" width="21" height="19"/>
                                                     </variation>
                                                     <connections>
                                                         <segue destination="67D-B8-h7M" kind="show" identifier="toDetailVC" id="6uX-DZ-Jub"/>
