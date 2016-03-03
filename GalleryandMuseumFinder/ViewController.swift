@@ -293,7 +293,7 @@ class ViewController: UIViewController, UIScrollViewDelegate, UITableViewDelegat
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if isSearchActive {
-            return filtered.count
+            return (filtered.count)
         }
         else {
             return galleryArray.count
