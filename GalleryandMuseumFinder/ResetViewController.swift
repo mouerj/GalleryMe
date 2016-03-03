@@ -9,7 +9,7 @@
 import UIKit
 import Firebase
 
-class ResetViewController: UIViewController {
+class ResetViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var emailTextField: UITextField!
     
@@ -41,6 +41,7 @@ class ResetViewController: UIViewController {
                 })
                 alert.addAction(ok)
                 self.presentViewController(alert, animated: true, completion: nil)
+                self.emailTextField.text = nil
             }
         }
     }
@@ -58,7 +59,10 @@ class ResetViewController: UIViewController {
         
     }
 
-    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return false
+    }
     
     
 

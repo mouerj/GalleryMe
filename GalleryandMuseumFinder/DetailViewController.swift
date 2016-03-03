@@ -21,6 +21,24 @@ class DetailViewController: UIViewController, CLLocationManagerDelegate, GMSMapV
     @IBOutlet weak var websiteTextView: UITextView!
     @IBOutlet weak var hoursTextView: UITextView!
     
+    @IBOutlet weak var onTapSignOut: UIButton!
+    
+    @IBAction func onTapSignOut(sender: AnyObject) {
+        //unauth() is the logout method for the current user.
+        DataService.dataService.CURRENT_USER_REF.unauth()
+        
+        //remove the user's uid from storage
+        NSUserDefaults.standardUserDefaults().setValue(nil, forKey: "uid")
+        
+        //Head back to login
+        let loginViewcontroller = self.storyboard!.instantiateViewControllerWithIdentifier("turnAroundBrightEyes")
+        UIApplication.sharedApplication().keyWindow?.rootViewController = loginViewcontroller
+        print("method firing")
+     
+        
+        
+    }
+
     var detailArray = [Gallery]()
     
     var viaSegue: String!
@@ -37,8 +55,12 @@ class DetailViewController: UIViewController, CLLocationManagerDelegate, GMSMapV
         
         self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
         
+        
+//        self.onTapSignOut.titleLabel!.sizeToFit()
+        
         self.detailPull()
         
+       
         
         if self.imageView.image != nil {
             self.photoPull()

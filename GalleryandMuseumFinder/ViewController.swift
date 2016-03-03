@@ -14,7 +14,7 @@ import MapKit
 
 var tableView: UITableView!
 
-class ViewController: UIViewController, UIScrollViewDelegate, UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate, GMSMapViewDelegate, UISearchBarDelegate, UISearchControllerDelegate, TableViewCellDelegate {
+class ViewController: UIViewController, UIScrollViewDelegate, UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate, GMSMapViewDelegate, UISearchBarDelegate, UISearchControllerDelegate, TableViewCellDelegate, UITextFieldDelegate {
     
     
     @IBOutlet weak var tableView: GMtableView!
@@ -216,7 +216,7 @@ class ViewController: UIViewController, UIScrollViewDelegate, UITableViewDelegat
             }
             
         }
-        
+
         task.resume()
         
         let task2 = session2.dataTaskWithURL(urlTwo!) { (data , response, error ) -> Void in
@@ -342,7 +342,6 @@ class ViewController: UIViewController, UIScrollViewDelegate, UITableViewDelegat
         let gallery = getSelectedGallery(indexPath)
         let lat = gallery.latitude
         let lng = gallery.longitude
-        //    let bounds = GMSCoordinateBounds.init()
         let position = CLLocationCoordinate2DMake(lat, lng)
         let marker = GMSMarker(position: position)
         print(galleryArray[indexPath.row].placeID)
@@ -361,6 +360,11 @@ class ViewController: UIViewController, UIScrollViewDelegate, UITableViewDelegat
             cell.onTapSegue.hidden = false
         }
         
+    }
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return false
     }
     
     func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
@@ -393,6 +397,7 @@ class GalleryNavigationController: UINavigationController {
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
         return .LightContent
     }
+    
 }
 
 

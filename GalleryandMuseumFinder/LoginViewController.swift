@@ -9,7 +9,7 @@
 import UIKit
 import Firebase
 import Google
-class LoginViewController: UIViewController, GIDSignInUIDelegate {
+class LoginViewController: UIViewController, GIDSignInUIDelegate, UITextFieldDelegate {
 
     @IBOutlet weak var signInButton: GIDSignInButton!
     
@@ -93,8 +93,6 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate {
 //        performSegueWithIdentifier("EnterAppSegue", sender: nil)
     }
     
-    
-
     
     
     
