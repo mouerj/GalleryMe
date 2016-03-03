@@ -34,9 +34,7 @@ class DetailViewController: UIViewController, CLLocationManagerDelegate, GMSMapV
         let loginViewcontroller = self.storyboard!.instantiateViewControllerWithIdentifier("turnAroundBrightEyes")
         UIApplication.sharedApplication().keyWindow?.rootViewController = loginViewcontroller
         print("method firing")
-     
-        
-        
+    
     }
 
     var detailArray = [Gallery]()
@@ -73,7 +71,6 @@ class DetailViewController: UIViewController, CLLocationManagerDelegate, GMSMapV
             } .resume()
     }
     
-    
     func detailPull () {
         
         let detailURL = String("https://maps.googleapis.com/maps/api/place/details/json?&key=AIzaSyDNopD2lCPhs0z-Uap3f8EPUt9R3gGjGjg&placeid=\(self.viaSegue)")
@@ -99,8 +96,6 @@ class DetailViewController: UIViewController, CLLocationManagerDelegate, GMSMapV
                     }
                 }
                 
-                
-                
                 print("RESULT: \(result)")
                 dispatch_async(dispatch_get_main_queue()) { () -> Void in
                     if let hoursDict = result["opening_hours"] as? Dictionary<String, AnyObject> {
@@ -111,7 +106,6 @@ class DetailViewController: UIViewController, CLLocationManagerDelegate, GMSMapV
                         
                         
                         self.hoursTextView.text = (hoursArray!.componentsJoinedByString("\r\n"))
-                        
                         
                     }
                     self.nameLabel.text = result["name"] as? String
@@ -145,7 +139,6 @@ class DetailViewController: UIViewController, CLLocationManagerDelegate, GMSMapV
             getDataFromUrl(url2, completion: { (data, response, error) -> Void in
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
                     self.imageView.image = UIImage(data: data!)
-                    
                     
                     
                 })

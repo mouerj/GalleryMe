@@ -214,9 +214,7 @@ class ViewController: UIViewController, UIScrollViewDelegate, UITableViewDelegat
             catch let error as NSError {
                 print("jsonError: \(error.localizedDescription)")
             }
-            
         }
-
         task.resume()
         
         let task2 = session2.dataTaskWithURL(urlTwo!) { (data , response, error ) -> Void in
@@ -232,7 +230,6 @@ class ViewController: UIViewController, UIScrollViewDelegate, UITableViewDelegat
                         self.galleryArray.append(galleryObject)
                     }
                 }
-                
                 dispatch_async(dispatch_get_main_queue()) { () -> Void in
                     self.tableView.reloadData()
                 }
@@ -257,12 +254,10 @@ class ViewController: UIViewController, UIScrollViewDelegate, UITableViewDelegat
                         self.galleryArray.append(galleryObject)
                     }
                 }
-                
                 dispatch_async(dispatch_get_main_queue()) { () -> Void in
                     self.tableView.reloadData()
                 }
             }
-                
             catch let error as NSError {
                 print("jsonError: \(error.localizedDescription)")
                 
@@ -281,18 +276,14 @@ class ViewController: UIViewController, UIScrollViewDelegate, UITableViewDelegat
                 for dictionary in galleries4 {
                     let galleryObject:Gallery = Gallery(galleryDictionary: dictionary)
                     self.galleryArray.append(galleryObject)
-                    
-                    
                 }
                 dispatch_async(dispatch_get_main_queue()) { () -> Void in
                     self.tableView.reloadData()
                 }
             }
-                
             catch let error as NSError {
                 print("jsonError: \(error.localizedDescription)")
             }
-            
         }
         task4.resume()
     }
@@ -305,12 +296,11 @@ class ViewController: UIViewController, UIScrollViewDelegate, UITableViewDelegat
         else {
             return galleryArray.count
         }
-        
     }
     
     func getSelectedGallery(indexPath: NSIndexPath) -> Gallery {
         if self.filtered.count > 0 {
-          return self.filtered[indexPath.row]
+            return self.filtered[indexPath.row]
         }
         return galleryArray[indexPath.row]
     }
@@ -322,14 +312,12 @@ class ViewController: UIViewController, UIScrollViewDelegate, UITableViewDelegat
             cell.cellName!.text = filtered[indexPath.row].name
             cell.addressLabel.text = filtered[indexPath.row].formattedAddress
             cell.onTapSegue.hidden = true
-            
         }
         else  {
             cell.contentView.userInteractionEnabled = true
             cell.cellName!.text = galleryArray[indexPath.row].name
             cell.addressLabel.text = galleryArray[indexPath.row].formattedAddress
             cell.onTapSegue.hidden = true
-            
         }
         return cell
     }
@@ -361,7 +349,6 @@ class ViewController: UIViewController, UIScrollViewDelegate, UITableViewDelegat
         }
         
     }
-    
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         self.view.endEditing(true)
         return false
@@ -388,16 +375,12 @@ class ViewController: UIViewController, UIScrollViewDelegate, UITableViewDelegat
             print("from prepare for segue\(self.currentPlaceID)")
             
         }
-        
     }
-    
 }
-
 class GalleryNavigationController: UINavigationController {
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
         return .LightContent
     }
-    
 }
 
 
