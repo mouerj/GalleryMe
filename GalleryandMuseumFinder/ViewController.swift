@@ -55,6 +55,7 @@ class ViewController: UIViewController, UIScrollViewDelegate, UITableViewDelegat
     
     var currentPlaceID: String = ""
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.automaticallyAdjustsScrollViewInsets = false
@@ -161,10 +162,18 @@ class ViewController: UIViewController, UIScrollViewDelegate, UITableViewDelegat
                     self.userLoc = pm.locality!
                     self.data_request()
                     print("I'm in \(self.userLoc)")
-                }
-                else {
+                    
+        //CHANGE LOCATION ON MAP??
+//                } else if self.changeLocText.isEmpty == false {
+//                    let pm = placemarks![0] as! CLPlacemark
+//                    self.changeLocText = self.userLoc
+//                    self.changeLocText = pm.locality!
+//                    self.data_request()
+                
+                } else {
                     print("Problem with the data received from geocoder")
                 }
+                
             })
             print(lat, long)
             locationManager.stopUpdatingLocation()
@@ -210,7 +219,10 @@ class ViewController: UIViewController, UIScrollViewDelegate, UITableViewDelegat
                         
                     }
                 }
+                dispatch_async(dispatch_get_main_queue()) { () -> Void in
+
                 self.tableView.reloadData()
+                }
             }
                 
             catch let error as NSError {
@@ -379,11 +391,36 @@ class ViewController: UIViewController, UIScrollViewDelegate, UITableViewDelegat
             
         }
     }
-}
-class GalleryNavigationController: UINavigationController {
-    override func preferredStatusBarStyle() -> UIStatusBarStyle {
-        return .LightContent
+    
+    //CHANGE USER LOCATION 
+    
+    @IBAction func onChangeLocationTapped(sender: UIBarButtonItem) {
+        var inputTextField: UITextField!
+        let changeLocPrompt = UIAlertController(title: "Enter New Location", message: nil, preferredStyle: UIAlertControllerStyle.Alert)
+        changeLocPrompt.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel, handler: nil))
+        changeLocPrompt.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: { (action) -> Void in
+            self.userLoc = inputTextField.text!
+            print("\(inputTextField?.text)")
+            print("\(self.userLoc)")
+            self.data_request()
+        }))
+        
+        changeLocPrompt.addTextFieldWithConfigurationHandler ( { ( textField: UITextField!) in
+            textField.placeholder = "City, State"
+            textField.secureTextEntry = false
+            inputTextField = textField
+            
+        })
+        presentViewController(changeLocPrompt, animated: true, completion: nil)
+
+        locationManager.startUpdatingLocation()
     }
+    
+}
+    class GalleryNavigationController: UINavigationController {
+        override func preferredStatusBarStyle() -> UIStatusBarStyle {
+            return .LightContent
+        }
 }
 
 

@@ -505,6 +505,11 @@
                     </view>
                     <navigationItem key="navigationItem" id="uNu-6d-dbY">
                         <nil key="title"/>
+                        <barButtonItem key="leftBarButtonItem" systemItem="action" id="g88-br-cKY">
+                            <connections>
+                                <action selector="onChangeLocationTapped:" destination="cSu-9h-eUs" id="OjV-iL-Vc4"/>
+                            </connections>
+                        </barButtonItem>
                         <textField key="titleView" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="GalleryMe" textAlignment="center" minimumFontSize="17" id="nnj-U4-aBW">
                             <rect key="frame" x="8" y="2" width="157" height="40"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
