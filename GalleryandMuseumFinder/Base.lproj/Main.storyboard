@@ -252,7 +252,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mjD-jX-znG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="406.5" y="210"/>
+            <point key="canvasLocation" x="-452" y="210"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="noo-me-tD8">
@@ -511,7 +511,7 @@
                             </connections>
                         </barButtonItem>
                         <textField key="titleView" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="GalleryMe" textAlignment="center" minimumFontSize="17" id="nnj-U4-aBW">
-                            <rect key="frame" x="8" y="2" width="157" height="40"/>
+                            <rect key="frame" x="52" y="2" width="113" height="40"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -551,7 +551,7 @@
                     </connections>
                 </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="-300" y="210"/>
+            <point key="canvasLocation" x="-898" y="210"/>
         </scene>
         <!--Gallery Navigation Controller-->
         <scene sceneID="jhm-yw-lap">
@@ -570,7 +570,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="P93-34-QIs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-993" y="210"/>
+            <point key="canvasLocation" x="-1335" y="210"/>
         </scene>
         <!--Intro View Controller-->
         <scene sceneID="7bq-9Q-WbD">
