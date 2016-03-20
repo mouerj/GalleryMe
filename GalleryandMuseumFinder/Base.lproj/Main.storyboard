@@ -131,21 +131,34 @@
                                     <rect key="frame" x="16" y="436" width="288" height="95"/>
                                 </variation>
                             </textView>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fQC-b1-dHl">
-                                <rect key="frame" x="277" y="395" width="34" height="33"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fQC-b1-dHl">
+                                <rect key="frame" x="281" y="395" width="34" height="34"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="34" id="8Wd-tx-XH9"/>
-                                    <constraint firstAttribute="height" constant="33" id="Vmv-zC-Phk"/>
+                                    <constraint firstAttribute="height" constant="34" id="Vmv-zC-Phk"/>
                                 </constraints>
                                 <state key="normal" title="Button" image="FB-f-Logo__blue_57"/>
                                 <connections>
                                     <action selector="postToFacebook:" destination="67D-B8-h7M" eventType="touchUpInside" id="dVd-kb-26R"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AbT-qy-e25">
+                                <rect key="frame" x="281" y="353" width="34" height="34"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="34" id="07M-fI-RWo"/>
+                                    <constraint firstAttribute="height" constant="34" id="qgI-HX-gp3"/>
+                                </constraints>
+                                <state key="normal" title="Button" image="emptyheart"/>
+                                <connections>
+                                    <action selector="onTapLike:" destination="67D-B8-h7M" eventType="touchUpInside" id="yUA-HN-8Fh"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="3iy-pn-FEf" firstAttribute="leading" secondItem="nOh-O6-YNm" secondAttribute="leadingMargin" id="25E-Ls-Y2A"/>
+                            <constraint firstItem="fQC-b1-dHl" firstAttribute="top" secondItem="AbT-qy-e25" secondAttribute="bottom" constant="8" id="2fc-PH-Z4w"/>
                             <constraint firstItem="xf4-Ib-EOh" firstAttribute="leading" secondItem="nOh-O6-YNm" secondAttribute="leadingMargin" id="7eK-yj-ID7"/>
                             <constraint firstItem="8SX-DY-rir" firstAttribute="leading" secondItem="nOh-O6-YNm" secondAttribute="leadingMargin" id="AmM-eD-XMU"/>
                             <constraint firstItem="3iy-pn-FEf" firstAttribute="top" secondItem="8SX-DY-rir" secondAttribute="bottom" constant="8" id="CXY-sN-GoD">
@@ -156,11 +169,12 @@
                             </constraint>
                             <constraint firstItem="mdQ-ey-lbY" firstAttribute="trailing" secondItem="nOh-O6-YNm" secondAttribute="trailingMargin" id="FfD-HW-BQB"/>
                             <constraint firstItem="xf4-Ib-EOh" firstAttribute="trailing" secondItem="nOh-O6-YNm" secondAttribute="trailingMargin" id="Il3-Ha-KsZ"/>
-                            <constraint firstItem="nyF-t3-nz0" firstAttribute="top" secondItem="fQC-b1-dHl" secondAttribute="bottom" constant="8" id="LtO-j1-7Wp"/>
+                            <constraint firstItem="nyF-t3-nz0" firstAttribute="top" secondItem="fQC-b1-dHl" secondAttribute="bottom" constant="7" id="LtO-j1-7Wp"/>
                             <constraint firstItem="xf4-Ib-EOh" firstAttribute="top" secondItem="3iy-pn-FEf" secondAttribute="bottom" constant="8" id="NFe-hM-ZhH">
                                 <variation key="widthClass=compact" constant="8"/>
                             </constraint>
                             <constraint firstItem="8SX-DY-rir" firstAttribute="top" secondItem="mdQ-ey-lbY" secondAttribute="bottom" constant="8" id="O7D-tv-V7p"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="AbT-qy-e25" secondAttribute="trailing" constant="-11" id="OaO-EW-bS1"/>
                             <constraint firstItem="3iy-pn-FEf" firstAttribute="trailing" secondItem="nOh-O6-YNm" secondAttribute="trailingMargin" id="UqJ-eG-mAy"/>
                             <constraint firstAttribute="trailingMargin" secondItem="lIR-bI-UmZ" secondAttribute="trailing" constant="-20" id="X2K-qQ-e8g"/>
                             <constraint firstItem="8SX-DY-rir" firstAttribute="trailing" secondItem="nOh-O6-YNm" secondAttribute="trailingMargin" id="YdZ-ne-Fea"/>
@@ -1006,6 +1020,7 @@
     </scenes>
     <resources>
         <image name="FB-f-Logo__blue_57" width="57" height="57"/>
+        <image name="emptyheart" width="50" height="50"/>
         <image name="info" width="40" height="40"/>
         <image name="johalla1" width="1024" height="682"/>
     </resources>

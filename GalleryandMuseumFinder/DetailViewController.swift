@@ -59,6 +59,8 @@ class DetailViewController: UIViewController, CLLocationManagerDelegate, GMSMapV
        
         
         if self.imageView.image != nil {
+            self.imageView.animationDuration = 50
+            self.imageView.startAnimating()
             self.photoPull()
         } else {
             
@@ -140,8 +142,7 @@ class DetailViewController: UIViewController, CLLocationManagerDelegate, GMSMapV
             getDataFromUrl(url2, completion: { (data, response, error) -> Void in
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
                     self.imageView.image = UIImage(data: data!)
-                    
-                    
+                
                 })
                 
             })
@@ -150,11 +151,10 @@ class DetailViewController: UIViewController, CLLocationManagerDelegate, GMSMapV
         
     }
     
-    
     @IBAction func postToFacebook(sender: AnyObject) {
         if SLComposeViewController.isAvailableForServiceType(SLServiceTypeFacebook){
-            let facebookSheet:SLComposeViewController = SLComposeViewController(forServiceType: SLServiceTypeFacebook)
-            facebookSheet.setInitialText("Share on Facebook")
+            let facebookSheet:SLComposeViewController = SLComposeViewController(forServiceType: SLServiceTypeFacebook)!
+            facebookSheet.setInitialText("\(self.nameLabel.text!)\n\(self.addressTextView.text)")
             self.presentViewController(facebookSheet, animated: true, completion: nil)
         } else {
             let alert = UIAlertController(title: "Accounts", message: "Please login to Facebook via settings to share.", preferredStyle: UIAlertControllerStyle.Alert)
@@ -163,6 +163,10 @@ class DetailViewController: UIViewController, CLLocationManagerDelegate, GMSMapV
         }
         
     }
+    
+    @IBAction func onTapLike(sender: AnyObject) {
+    }
+    
     
 }
 
