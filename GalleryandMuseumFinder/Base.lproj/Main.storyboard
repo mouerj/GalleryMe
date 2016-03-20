@@ -229,9 +229,9 @@
                     <navigationItem key="navigationItem" id="5bv-GY-fLY">
                         <barButtonItem key="rightBarButtonItem" style="plain" id="5Mx-5Z-JRN">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="VRf-d5-oDV">
-                                <rect key="frame" x="258" y="7" width="46" height="30"/>
+                                <rect key="frame" x="244" y="7" width="60" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Exit"/>
+                                <state key="normal" title="Sign Out"/>
                                 <connections>
                                     <action selector="onTapSignOut:" destination="67D-B8-h7M" eventType="touchUpInside" id="Ivq-Mt-Zd4"/>
                                 </connections>
@@ -252,7 +252,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mjD-jX-znG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-452" y="210"/>
+            <point key="canvasLocation" x="-315" y="210"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="noo-me-tD8">
@@ -551,7 +551,7 @@
                     </connections>
                 </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="-898" y="210"/>
+            <point key="canvasLocation" x="-732" y="210"/>
         </scene>
         <!--Gallery Navigation Controller-->
         <scene sceneID="jhm-yw-lap">
