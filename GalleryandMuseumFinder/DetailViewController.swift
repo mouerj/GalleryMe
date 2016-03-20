@@ -2,7 +2,7 @@
 //  DetailViewController.swift
 //  GalleryandMuseumFinder
 //
-//  Created by Taryn Parker on 2/16/16.
+//  Created by Joseph Mouer on 2/16/16.
 //  Copyright © 2016 Mobile Makers. All rights reserved.
 //
 
@@ -11,6 +11,7 @@ import GoogleMaps
 import Google
 import CoreLocation
 import MapKit
+import Social
 
 class DetailViewController: UIViewController, CLLocationManagerDelegate, GMSMapViewDelegate {
     
@@ -145,6 +146,20 @@ class DetailViewController: UIViewController, CLLocationManagerDelegate, GMSMapV
                 
             })
             
+        }
+        
+    }
+    
+    
+    @IBAction func postToFacebook(sender: AnyObject) {
+        if SLComposeViewController.isAvailableForServiceType(SLServiceTypeFacebook){
+            let facebookSheet:SLComposeViewController = SLComposeViewController(forServiceType: SLServiceTypeFacebook)
+            facebookSheet.setInitialText("Share on Facebook")
+            self.presentViewController(facebookSheet, animated: true, completion: nil)
+        } else {
+            let alert = UIAlertController(title: "Accounts", message: "Please login to Facebook via settings to share.", preferredStyle: UIAlertControllerStyle.Alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+            self.presentViewController(alert, animated: true, completion: nil)
         }
         
     }
