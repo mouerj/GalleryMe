@@ -35,6 +35,7 @@
 		DF53E6331C7F587C00BD3AEF /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF53E6321C7F587C00BD3AEF /* TableViewCell.swift */; };
 		DF785F8D1C811DDB000DC875 /* IntroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF785F8C1C811DDB000DC875 /* IntroViewController.swift */; };
 		DF7CE42A1C9EEB0100826543 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF7CE4291C9EEB0100826543 /* CoreGraphics.framework */; };
+		DFBB3A621C9F814D00EA33E8 /* UserPickViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFBB3A611C9F814D00EA33E8 /* UserPickViewController.swift */; };
 		FC6489CF3E7720E6299738EE /* Pods_GalleryandMuseumFinder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 930E2401F11E2ED4E7993804 /* Pods_GalleryandMuseumFinder.framework */; };
 /* End PBXBuildFile section */
 
@@ -75,6 +76,7 @@
 		DF53E6321C7F587C00BD3AEF /* TableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 		DF785F8C1C811DDB000DC875 /* IntroViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntroViewController.swift; sourceTree = "<group>"; };
 		DF7CE4291C9EEB0100826543 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		DFBB3A611C9F814D00EA33E8 /* UserPickViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserPickViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,6 +138,7 @@
 				30C8FCF21C74FA4F0007D48C /* DataService.swift */,
 				30C8FD021C753D9C0007D48C /* LoginViewC+TwitterFuctionality.swift */,
 				952C0C5E1C738DCF005BC9E7 /* Main.storyboard */,
+				DFBB3A611C9F814D00EA33E8 /* UserPickViewController.swift */,
 				DF53E6321C7F587C00BD3AEF /* TableViewCell.swift */,
 				DF53E6211C7BABD900BD3AEF /* ViewController.swift */,
 				DF785F8C1C811DDB000DC875 /* IntroViewController.swift */,
@@ -298,6 +301,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DFBB3A621C9F814D00EA33E8 /* UserPickViewController.swift in Sources */,
 				DF53E6221C7BABD900BD3AEF /* ViewController.swift in Sources */,
 				DF53E6331C7F587C00BD3AEF /* TableViewCell.swift in Sources */,
 				30C8FCFB1C7507B70007D48C /* RegisterViewController.swift in Sources */,
